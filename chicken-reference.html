@@ -395,8 +395,9 @@
 </header>
 
 <nav>
+  <a href="#tomorrow">🚨 Next Actions</a>
   <a href="#flock">Flock Plan</a>
-  <a href="#breeds">Breeds</a>
+  <a href="#breeds">Breed</a>
   <a href="#coop">Coop</a>
   <a href="#predators">Predators</a>
   <a href="#water">Water</a>
@@ -411,6 +412,50 @@
 
 <main>
 
+  <!-- TOMORROW'S TO-DO -->
+  <section id="tomorrow" style="border-color: var(--red-border);">
+    <div class="section-header" style="background: var(--red-light); border-color: var(--red-border);">
+      <span class="icon">🚨</span>
+      <h2 style="color: var(--red-dark);">Next Actions — Sourcing Blocked, Shed Pending</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="callout callout-danger">
+        <span class="callout-label">Blocking Issue</span>
+        Wyandotte started pullets are sold out at The Chick Hatchery. Resolve sourcing before making any other acquisition decisions. Do not order pop hole closer or finalize any coop hardware until bird timing is confirmed.
+      </div>
+
+      <h3 style="color: var(--red-dark);">1 — Resolve Sourcing (Call Today)</h3>
+      <ul class="checklist" id="tomorrow-list">
+        <li data-id="t0"><div class="check-box" onclick="toggleTomorrow(0)"></div><span><strong>Call Abendroth's — (920) 478-2053</strong> · Waterloo, WI (~75 miles) · Ask: Wyandotte started pullets in stock? What age? How many available? Also confirm French Pearl Guinea timing — same call.</span></li>
+        <li data-id="t1"><div class="check-box" onclick="toggleTomorrow(1)"></div><span><strong>Check Meyer Hatchery</strong> · meyerhatchery.com · Golden Laced Wyandotte started pullets — taking 2026 orders, verify actual availability dates and shipping cost to WI</span></li>
+        <li data-id="t2"><div class="check-box" onclick="toggleTomorrow(2)"></div><span><strong>Call The Chick Hatchery — (989) 272-3461</strong> · Ask: Gold Laced Wyandotte started pullets in stock separately? What is restock timeline for Silver Laced? They also have Easter Egger and Rhode Island Red started pullets available now — see breed comparison below if Wyandotte sourcing fails.</span></li>
+      </ul>
+
+      <h3 style="color: var(--amber-dark);">2 — Shed Assessment (Do This Week)</h3>
+      <ul>
+        <li>Interior ceiling height at low and high point (known: 6 ft / 8 ft — confirm exact)</li>
+        <li>Every window: dimensions, which wall, height from floor, condition</li>
+        <li>Every ventilation opening: dimensions, which wall, height from floor</li>
+        <li>Foundation type and ground clearance below shed floor</li>
+        <li>Current floor material (concrete, wood, dirt, other)</li>
+        <li>Exterior walls with clean access for nest box mounting (face away from prevailing weather)</li>
+        <li>Location of existing electrical outlets</li>
+        <li>Door swing direction</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">Guinea Note</span>
+        Sloped ceiling (6 ft low / 8 ft high) means guineas will push to the high side and chickens will follow. Note headroom at each potential roost location.
+      </div>
+
+      <h3 style="color: var(--amber-dark);">3 — Hardware (Order After Bird Timing Is Confirmed)</h3>
+      <ul class="checklist">
+        <li style="border:none;padding:0.3rem 0;"><span>Automatic solar-regulated pop hole closer — lead times vary, don't wait too long once sourcing is resolved</span></li>
+      </ul>
+
+    </div>
+  </section>
+
   <!-- FLOCK PLAN -->
   <section id="flock">
     <div class="section-header">
@@ -421,72 +466,90 @@
       <div class="two-col">
         <div class="stat-card"><div class="stat-label">Birds</div><div class="stat-value">6 hens + 2–3 guineas</div></div>
         <div class="stat-card"><div class="stat-label">Space</div><div class="stat-value">80 sq ft (2× min)</div></div>
-        <div class="stat-card"><div class="stat-label">Acquire as</div><div class="stat-value">Started pullets</div></div>
+        <div class="stat-card" style="background:var(--amber-light);border-color:var(--amber-border);"><div class="stat-label" style="color:var(--amber-mid);">Acquire as</div><div class="stat-value" style="color:var(--amber-dark);">Pullets (sourcing TBD)</div></div>
         <div class="stat-card"><div class="stat-label">Season</div><div class="stat-value">Free range / confined</div></div>
       </div>
-      <div class="callout callout-warn">
-        <span class="callout-label">⚠ Status</span>
-        Pre-planning. Shed assessment required before conversion decisions are finalized.
+      <div class="callout callout-danger">
+        <span class="callout-label">⚠ Status — May 26, 2026</span>
+        Sourcing blocked: Wyandotte started pullets sold out at primary source. Shed assessment not yet done. No hardware ordered. Next step: resolve bird sourcing, then shed assessment, then coop conversion planning.
       </div>
     </div>
   </section>
 
   <!-- BREEDS -->
   <section id="breeds">
-    <div class="section-header">
+    <div class="section-header" style="background:var(--amber-light);border-color:var(--amber-border);">
       <span class="icon">🐓</span>
-      <h2>Breed Shortlist</h2>
+      <h2 style="color:var(--amber-dark);">Breed — Wyandotte (Sourcing Unresolved)</h2>
     </div>
     <div class="section-body">
-      <div class="callout callout-tip">
-        <span class="callout-label">🌡 Zone 5b Priority</span>
-        Rose comb = most frostbite-resistant. Wyandotte is explicitly listed as cold-tolerant in Storey's. Australorp cold tolerance <strong>unconfirmed</strong> — verify before selecting.
+
+      <h3>First Choice: Wyandotte</h3>
+      <div class="callout callout-warn">
+        <span class="callout-label">📦 Sourcing — Work in Progress</span>
+        <strong>The Chick Hatchery</strong> (Owosso, MI · ~180 miles) — <span style="color:var(--red-dark);font-weight:600;">Silver Laced Wyandotte started pullets: SOLD OUT.</span> Gold Laced unconfirmed — call (989) 272-3461.<br><br>
+        <strong>Abendroth's Hatchery</strong> (Waterloo, WI · ~75 miles · (920) 478-2053) — Carries Wyandottes + French Pearl Guineas. <strong>Call first</strong> — closest option, one call covers both.<br><br>
+        <strong>Meyer Hatchery</strong> (Polk, OH · ~300 miles · meyerhatchery.com) — Golden Laced Wyandotte started pullets, taking 2026 orders. Verify availability and shipping cost to WI.
       </div>
+      <div class="two-col">
+        <div class="stat-card"><div class="stat-label">Eggs / year</div><div class="stat-value">200–240</div></div>
+        <div class="stat-card"><div class="stat-label">Comb</div><div class="stat-value">Rose — frostbite-proof</div></div>
+        <div class="stat-card"><div class="stat-label">Cold tolerance</div><div class="stat-value">Excellent (Zone 5b pick)</div></div>
+        <div class="stat-card"><div class="stat-label">Broodiness</div><div class="stat-value">Moderate</div></div>
+      </div>
+      <ul>
+        <li>Rose comb lies completely flat — no rear spike. Maximum frostbite protection of any common breed. <em>(Storey's + online sources)</em></li>
+        <li>Storey's explicit top pick for Zone 5b. Bred for cold-climate performance in Michigan and New York. <em>(Storey's)</em></li>
+        <li>Heavy-feathered, heavy-bodied. Consistent layer through cold months. Scratches less aggressively — suitable near garden. <em>(Storey's)</em></li>
+      </ul>
+
+      <h3>If Wyandotte Sourcing Fails — Alternatives Available Now at The Chick Hatchery</h3>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr><th>Breed</th><th>Eggs/Yr</th><th>Comb</th><th>Notes</th></tr>
-          </thead>
+          <thead><tr><th>Breed</th><th>Comb</th><th>Eggs/yr</th><th>Egg Color</th><th>Zone 5b Verdict</th></tr></thead>
           <tbody>
             <tr class="highlight-row">
-              <td><strong>Wyandotte</strong> ⭐</td>
-              <td>200–220</td>
-              <td><span class="badge badge-green">Rose</span></td>
-              <td>Top Zone 5b pick. Less aggressive scratcher.</td>
-            </tr>
-            <tr class="highlight-row">
-              <td><strong>Norw. Jaerhon</strong> ⭐</td>
-              <td>250+</td>
-              <td><span class="badge badge-green">Rose</span></td>
-              <td>Leghorn-type. Rarely broody. White eggs.</td>
+              <td><strong>Easter Egger</strong></td>
+              <td>Pea — cold-resistant</td>
+              <td>~250</td>
+              <td>Blue/green/pink</td>
+              <td><span class="badge badge-green">Acceptable fallback</span></td>
             </tr>
             <tr>
-              <td>Australorp</td>
-              <td>250+</td>
-              <td>Single</td>
-              <td>High producer. Prone to broodiness. Cold tolerance TBD.</td>
-            </tr>
-            <tr>
-              <td>Java</td>
-              <td>180–200</td>
-              <td>Single</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Langshan</td>
-              <td>150–180</td>
-              <td>Single</td>
-              <td>Less aggressive scratcher — good near garden.</td>
-            </tr>
-            <tr>
-              <td>Welsummer</td>
-              <td>160–180</td>
-              <td>Single</td>
-              <td>Dark brown eggs.</td>
+              <td><strong>Rhode Island Red</strong></td>
+              <td>Single — frostbite risk</td>
+              <td>250–300</td>
+              <td>Brown</td>
+              <td><span class="badge badge-amber">Use with caution</span></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <details>
+        <summary>Easter Egger — full notes</summary>
+        <ul style="padding:0.75rem 1rem;margin:0;">
+          <li>Pea comb gives cold protection comparable to rose comb — no frostbite spike to worry about. Solid Zone 5b bird.</li>
+          <li>Good layers (~250/year), cold-hardy, docile, easy to manage. NPIP-certified at The Chick Hatchery.</li>
+          <li>Tradeoff: colored eggs (blue/green/pink), not brown. If you don't care about egg color uniformity, this is the clearest fallback.</li>
+          <li>Not a recognized APA breed — "Easter Egger" is a mixed-heritage bird carrying the blue egg gene. Individual birds vary in appearance.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Rhode Island Red — full notes</summary>
+        <ul style="padding:0.75rem 1rem;margin:0;">
+          <li>Excellent layer — 250–300 brown eggs/year, one of the highest-production heritage breeds available.</li>
+          <li>Cold-hardy body and heavy feathering. But single comb is the problem: tall, upright, with multiple points. Vulnerable to frostbite in Wisconsin winters even with good ventilation.</li>
+          <li>Workable but requires more diligent humidity management in the coop. Comb damage in severe cold is a real possibility.</li>
+          <li>If you go RIR, monitor comb weekly in winter and apply Vaseline on days below 10°F as a preventive measure.</li>
+          <li>Bottom line: good bird, wrong comb for Zone 5b. Use only if Wyandotte and Easter Egger both fail.</li>
+        </ul>
+      </details>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">⚠ Timing Warning — If Pivoting to Chicks</span>
+        Day-old chicks ordered now (late May 2026) reach laying age at 18–24 weeks = October/November 2026. That is exactly when Wisconsin daylight drops below 14 hours and production stops. Without supplemental lighting, first eggs would not come until spring 2027. Started pullets remain the right path — keep working sourcing before pivoting to chicks.
+      </div>
+
     </div>
   </section>
 
@@ -541,9 +604,12 @@
         <li>10 in/bird (heavy breeds) = <strong>90 in min for 9 birds</strong> — one 8-ft bar clears this</li>
         <li>Height: 2 ft off floor · 18 in from wall · 18 in between bars</li>
         <li>Material: 2×2 lumber with rounded edges</li>
-        <li>Best: roosts over droppings pit with 1×2 welded wire platform</li>
-        <li><strong>Guineas claim top perches</strong> — plan roost arrangement accordingly</li>
+        <li><strong>Guineas claim top perches</strong> — plan roost arrangement accounting for ceiling slope</li>
       </ul>
+      <div class="callout callout-tip">
+        <span class="callout-label">✅ Decision — Droppings Management</span>
+        Removable dropping boards below roosts. Simpler build than a droppings pit, easier cleanout.
+      </div>
 
       <h3>Nest Boxes</h3>
       <ul>
@@ -762,10 +828,10 @@
       </ul>
 
       <h3>Winter Lighting</h3>
-      <ul>
-        <li><strong>Option A:</strong> Do nothing. Accept reduced winter production. Natural rest may improve longevity.</li>
-        <li><strong>Option B:</strong> Start in early September. Morning hours only (not evening). 40–60W bulb, 7 ft above floor. Build to 15-hour day.</li>
-      </ul>
+      <div class="callout callout-tip">
+        <span class="callout-label">✅ Decision Made</span>
+        No supplemental lighting. Accepting reduced winter production. Natural rest cycle — may improve longevity.
+      </div>
 
       <h3>Summer — Heat Stress</h3>
       <div class="callout callout-danger">
@@ -956,7 +1022,7 @@
         <li data-id="1"><div class="check-box" onclick="toggleCheck(1)"></div><span>Call vet — confirm they see chickens and guineas. Get referral if not.</span></li>
         <li data-id="2"><div class="check-box" onclick="toggleCheck(2)"></div><span>Identify UW-Madison Extension poultry contact as backup</span></li>
         <li data-id="3"><div class="check-box" onclick="toggleCheck(3)"></div><span>Locate Wisconsin DATCP poultry contact (required for reportable disease)</span></li>
-        <li data-id="4"><div class="check-box" onclick="toggleCheck(4)"></div><span>Find NPIP-certified breeder in Wisconsin or nearby for started pullets</span></li>
+        <li data-id="4"><div class="check-box" onclick="toggleCheck(4)"></div><span><strong>Sourcing (in progress):</strong> Wyandotte started pullets sold out at The Chick Hatchery · Call Abendroth's (920) 478-2053 for Wyandotte pullets + guineas · Check Meyer Hatchery (meyerhatchery.com) · The Chick Hatchery has Easter Egger and Rhode Island Red started pullets (see breed notes)</span></li>
         <li data-id="5"><div class="check-box" onclick="toggleCheck(5)"></div><span>Walk ranging area — identify toxic plants before outdoor access</span></li>
         <li data-id="6"><div class="check-box" onclick="toggleCheck(6)"></div><span>Assemble first-aid kit before birds arrive</span></li>
         <li data-id="7"><div class="check-box" onclick="toggleCheck(7)"></div><span>Confirm vaccination schedule with vet based on Sheboygan County prevalence</span></li>
@@ -976,33 +1042,49 @@
 
   <!-- GAPS -->
   <section id="gaps">
-    <div class="section-header">
+    <div class="section-header" style="background:var(--red-light);border-color:var(--red-border);">
       <span class="icon">🔍</span>
-      <h2>Open Research Gaps</h2>
+      <h2 style="color:var(--red-dark);">Open Gaps — 3 Blocking, 3 Pre-Arrival</h2>
     </div>
     <div class="section-body">
-      <div class="gap-item"><div class="gap-dot"></div><span>Guinea-specific ration requirements — verify against Storey's guinea chapter</span></div>
-      <div class="gap-item"><div class="gap-dot"></div><span>Fencing and enclosure requirements for summer free ranging with guinea containment</span></div>
-      <div class="gap-item"><div class="gap-dot"></div><span>Australorp cold tolerance — not confirmed in Storey's weather section · verify before selecting</span></div>
-      <div class="gap-item"><div class="gap-dot"></div><span>Toxic plant identification walk of the actual ranging area at River House</span></div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.75rem;">Red dot = blocking now. Amber dot = must resolve before birds arrive.</p>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--red-dark);"></div><span><strong>Bird sourcing:</strong> Wyandotte started pullets sold out at The Chick Hatchery. Call Abendroth's + Meyer Hatchery. Easter Egger and RIR started pullets available as fallback — see Breed section.</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--red-dark);"></div><span><strong>Shed assessment:</strong> Not yet done. Required before any conversion decisions or hardware purchases.</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--red-dark);"></div><span><strong>Acquisition timeline:</strong> Once sourcing resolves, map bird arrival date against coop conversion completion. Started pullets need coop ready on arrival. Chick fallback adds 6–8 brooder weeks but delays first eggs to spring 2027.</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--amber-mid);"></div><span><strong>Guinea ration requirements</strong> — verify against Storey's guinea chapter before birds arrive</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--amber-mid);"></div><span><strong>Fencing and enclosure</strong> — summer free ranging requirements, especially guinea containment</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--amber-mid);"></div><span><strong>Toxic plant walk</strong> — identify and remove hazards in ranging area before birds have outdoor access</span></div>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <p>Source: Storey's Guide to Raising Chickens · Digested May 2026 · KB Personal Projects</p>
+  <p>Source: Storey's Guide to Raising Chickens · Digested May 2026 · Status updated May 26, 2026 · KB Personal Projects</p>
 </footer>
 
 <script>
   const STORAGE_KEY = 'chicken-checklist-v1';
+  const TOMORROW_KEY = 'chicken-tomorrow-v1';
   let checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  let checkedTomorrow = JSON.parse(localStorage.getItem(TOMORROW_KEY) || '[]');
 
   function render() {
     document.querySelectorAll('#task-list li').forEach(li => {
       const id = parseInt(li.dataset.id);
       const box = li.querySelector('.check-box');
       if (checked.includes(id)) {
+        box.classList.add('done');
+        li.classList.add('done-item');
+      } else {
+        box.classList.remove('done');
+        li.classList.remove('done-item');
+      }
+    });
+    document.querySelectorAll('#tomorrow-list li').forEach(li => {
+      const id = parseInt(li.dataset.id.replace('t',''));
+      const box = li.querySelector('.check-box');
+      if (checkedTomorrow.includes(id)) {
         box.classList.add('done');
         li.classList.add('done-item');
       } else {
@@ -1019,6 +1101,16 @@
       checked.push(id);
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+    render();
+  }
+
+  function toggleTomorrow(id) {
+    if (checkedTomorrow.includes(id)) {
+      checkedTomorrow = checkedTomorrow.filter(x => x !== id);
+    } else {
+      checkedTomorrow.push(id);
+    }
+    localStorage.setItem(TOMORROW_KEY, JSON.stringify(checkedTomorrow));
     render();
   }
 
