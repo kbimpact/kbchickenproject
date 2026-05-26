@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River House — Chicken Project</title>
+<style>
+  :root {
+    --green-dark: #2D5A1B;
+    --green-mid: #4A7C3F;
+    --green-light: #EAF3DE;
+    --green-border: #A8C98A;
+    --amber-dark: #7A4A08;
+    --amber-mid: #B87515;
+    --amber-light: #FDF3DC;
+    --amber-border: #E8C06A;
+    --red-dark: #6B1F1F;
+    --red-light: #FDECEC;
+    --red-border: #E8A8A8;
+    --blue-light: #EAF2FB;
+    --blue-border: #92C0E8;
+    --blue-dark: #1A4A7A;
+    --bg: #F9F7F2;
+    --surface: #FFFFFF;
+    --text: #1C1C1A;
+    --text-muted: #5A5A54;
+    --border: #E0DDD4;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.65;
+    padding-bottom: 3rem;
+  }
+
+  header {
+    background: var(--green-dark);
+    color: white;
+    padding: 1.25rem 1.25rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+
+  header p {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-top: 2px;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+
+  nav a {
+    display: inline-block;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--green-mid);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:active { border-bottom-color: var(--green-mid); }
+
+  main { padding: 0 1rem; }
+
+  section {
+    margin-top: 1.75rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .section-header {
+    background: var(--green-light);
+    border-bottom: 1px solid var(--green-border);
+    padding: 0.85rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--green-dark);
+  }
+
+  .section-header .icon { font-size: 20px; }
+
+  .section-body { padding: 1.1rem; }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 1.25rem 0 0.6rem;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p { margin-bottom: 0.7rem; font-size: 15px; }
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol {
+    padding-left: 1.3rem;
+    font-size: 15px;
+    margin-bottom: 0.7rem;
+  }
+  li { margin-bottom: 0.3rem; }
+  li:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 600; }
+
+  .callout {
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.9rem;
+    font-size: 14px;
+    margin: 0.9rem 0;
+    border-left: 3px solid;
+    line-height: 1.55;
+  }
+  .callout:last-child { margin-bottom: 0; }
+
+  .callout-warn {
+    background: var(--amber-light);
+    border-color: var(--amber-mid);
+    color: var(--amber-dark);
+  }
+
+  .callout-danger {
+    background: var(--red-light);
+    border-color: #C0392B;
+    color: var(--red-dark);
+  }
+
+  .callout-info {
+    background: var(--blue-light);
+    border-color: #3A82C4;
+    color: var(--blue-dark);
+  }
+
+  .callout-tip {
+    background: var(--green-light);
+    border-color: var(--green-mid);
+    color: var(--green-dark);
+  }
+
+  .callout-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.7px;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0.75rem 0;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 360px;
+  }
+
+  table.narrow { min-width: 0; }
+
+  th {
+    background: #F0EDE4;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--text-muted);
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #F0EDE4;
+    vertical-align: top;
+    color: var(--text);
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #FDFCF8; }
+
+  .highlight-row td { background: #EEF8E6 !important; }
+
+  details {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin: 0.75rem 0;
+    overflow: hidden;
+  }
+
+  summary {
+    padding: 0.75rem 1rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-dark);
+    cursor: pointer;
+    background: var(--green-light);
+    border-bottom: 1px solid transparent;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: '▸';
+    font-size: 12px;
+    color: var(--green-mid);
+    transition: transform 0.15s;
+  }
+
+  details[open] summary {
+    border-bottom-color: var(--green-border);
+  }
+
+  details[open] summary::after {
+    transform: rotate(90deg);
+  }
+
+  details .table-wrap {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  details .table-wrap table {
+    border-radius: 0;
+  }
+
+  details p, details ul {
+    padding: 0.75rem 1rem;
+    margin: 0;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    vertical-align: middle;
+  }
+
+  .badge-green { background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-border); }
+  .badge-amber { background: var(--amber-light); color: var(--amber-dark); border: 1px solid var(--amber-border); }
+  .badge-red { background: var(--red-light); color: var(--red-dark); border: 1px solid var(--red-border); }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #F0EDE4;
+    font-size: 15px;
+    margin: 0;
+  }
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--green-border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .check-box.done {
+    background: var(--green-mid);
+    border-color: var(--green-mid);
+  }
+
+  .check-box.done::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .checklist li.done-item span { text-decoration: line-through; color: var(--text-muted); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin: 0.75rem 0;
+  }
+
+  .stat-card {
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.8rem;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--green-mid);
+    margin-bottom: 2px;
+  }
+
+  .stat-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-dark);
+  }
+
+  .gap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #F0EDE4;
+    font-size: 14px;
+  }
+  .gap-item:last-child { border-bottom: none; }
+  .gap-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--amber-mid);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 1rem 0; }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🐔 River House — Chicken Project</h1>
+  <p>Plymouth, WI &middot; Zone 5b &middot; 6 Hens + 2–3 Guineas &middot; 8&times;10 Shed</p>
+</header>
+
+<nav>
+  <a href="#tomorrow">🚨 Next Actions</a>
+  <a href="#flock">Flock Plan</a>
+  <a href="#breeds">Breed</a>
+  <a href="#coop">Coop</a>
+  <a href="#predators">Predators</a>
+  <a href="#water">Water</a>
+  <a href="#feed">Feed</a>
+  <a href="#weather">Weather</a>
+  <a href="#health">Health</a>
+  <a href="#guineas">Guineas</a>
+  <a href="#eggs">Eggs</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#gaps">Gaps</a>
+</nav>
+
+<main>
+
+  <!-- TOMORROW'S TO-DO -->
+  <section id="tomorrow" style="border-color: var(--red-border);">
+    <div class="section-header" style="background: var(--red-light); border-color: var(--red-border);">
+      <span class="icon">🚨</span>
+      <h2 style="color: var(--red-dark);">Next Actions — Sourcing Blocked, Shed Pending</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="callout callout-danger">
+        <span class="callout-label">Blocking Issue</span>
+        Wyandotte started pullets are sold out at The Chick Hatchery. Resolve sourcing before making any other acquisition decisions. Do not order pop hole closer or finalize any coop hardware until bird timing is confirmed.
+      </div>
+
+      <h3 style="color: var(--red-dark);">1 — Resolve Sourcing (Call Today)</h3>
+      <ul class="checklist" id="tomorrow-list">
+        <li data-id="t0"><div class="check-box" onclick="toggleTomorrow(0)"></div><span><strong>Call Abendroth's — (920) 478-2053</strong> · Waterloo, WI (~75 miles) · Ask: Wyandotte started pullets in stock? What age? How many available? Also confirm French Pearl Guinea timing — same call.</span></li>
+        <li data-id="t1"><div class="check-box" onclick="toggleTomorrow(1)"></div><span><strong>Check Meyer Hatchery</strong> · meyerhatchery.com · Golden Laced Wyandotte started pullets — taking 2026 orders, verify actual availability dates and shipping cost to WI</span></li>
+        <li data-id="t2"><div class="check-box" onclick="toggleTomorrow(2)"></div><span><strong>Call The Chick Hatchery — (989) 272-3461</strong> · Ask: Gold Laced Wyandotte started pullets in stock separately? What is restock timeline for Silver Laced? They also have Easter Egger and Rhode Island Red started pullets available now — see breed comparison below if Wyandotte sourcing fails.</span></li>
+      </ul>
+
+      <h3 style="color: var(--amber-dark);">2 — Shed Assessment (Do This Week)</h3>
+      <ul>
+        <li>Interior ceiling height at low and high point (known: 6 ft / 8 ft — confirm exact)</li>
+        <li>Every window: dimensions, which wall, height from floor, condition</li>
+        <li>Every ventilation opening: dimensions, which wall, height from floor</li>
+        <li>Foundation type and ground clearance below shed floor</li>
+        <li>Current floor material (concrete, wood, dirt, other)</li>
+        <li>Exterior walls with clean access for nest box mounting (face away from prevailing weather)</li>
+        <li>Location of existing electrical outlets</li>
+        <li>Door swing direction</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">Guinea Note</span>
+        Sloped ceiling (6 ft low / 8 ft high) means guineas will push to the high side and chickens will follow. Note headroom at each potential roost location.
+      </div>
+
+      <h3 style="color: var(--amber-dark);">3 — Hardware (Order After Bird Timing Is Confirmed)</h3>
+      <ul class="checklist">
+        <li style="border:none;padding:0.3rem 0;"><span>Automatic solar-regulated pop hole closer — lead times vary, don't wait too long once sourcing is resolved</span></li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- FLOCK PLAN -->
+  <section id="flock">
+    <div class="section-header">
+      <span class="icon">🐣</span>
+      <h2>The Flock Plan</h2>
+    </div>
+    <div class="section-body">
+      <div class="two-col">
+        <div class="stat-card"><div class="stat-label">Birds</div><div class="stat-value">6 hens + 2–3 guineas</div></div>
+        <div class="stat-card"><div class="stat-label">Space</div><div class="stat-value">80 sq ft (2× min)</div></div>
+        <div class="stat-card" style="background:var(--amber-light);border-color:var(--amber-border);"><div class="stat-label" style="color:var(--amber-mid);">Acquire as</div><div class="stat-value" style="color:var(--amber-dark);">Pullets (sourcing TBD)</div></div>
+        <div class="stat-card"><div class="stat-label">Season</div><div class="stat-value">Free range / confined</div></div>
+      </div>
+      <div class="callout callout-danger">
+        <span class="callout-label">⚠ Status — May 26, 2026</span>
+        Sourcing blocked: Wyandotte started pullets sold out at primary source. Shed assessment not yet done. No hardware ordered. Next step: resolve bird sourcing, then shed assessment, then coop conversion planning.
+      </div>
+    </div>
+  </section>
+
+  <!-- BREEDS -->
+  <section id="breeds">
+    <div class="section-header" style="background:var(--amber-light);border-color:var(--amber-border);">
+      <span class="icon">🐓</span>
+      <h2 style="color:var(--amber-dark);">Breed — Wyandotte (Sourcing Unresolved)</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>First Choice: Wyandotte</h3>
+      <div class="callout callout-warn">
+        <span class="callout-label">📦 Sourcing — Work in Progress</span>
+        <strong>The Chick Hatchery</strong> (Owosso, MI · ~180 miles) — <span style="color:var(--red-dark);font-weight:600;">Silver Laced Wyandotte started pullets: SOLD OUT.</span> Gold Laced unconfirmed — call (989) 272-3461.<br><br>
+        <strong>Abendroth's Hatchery</strong> (Waterloo, WI · ~75 miles · (920) 478-2053) — Carries Wyandottes + French Pearl Guineas. <strong>Call first</strong> — closest option, one call covers both.<br><br>
+        <strong>Meyer Hatchery</strong> (Polk, OH · ~300 miles · meyerhatchery.com) — Golden Laced Wyandotte started pullets, taking 2026 orders. Verify availability and shipping cost to WI.
+      </div>
+      <div class="two-col">
+        <div class="stat-card"><div class="stat-label">Eggs / year</div><div class="stat-value">200–240</div></div>
+        <div class="stat-card"><div class="stat-label">Comb</div><div class="stat-value">Rose — frostbite-proof</div></div>
+        <div class="stat-card"><div class="stat-label">Cold tolerance</div><div class="stat-value">Excellent (Zone 5b pick)</div></div>
+        <div class="stat-card"><div class="stat-label">Broodiness</div><div class="stat-value">Moderate</div></div>
+      </div>
+      <ul>
+        <li>Rose comb lies completely flat — no rear spike. Maximum frostbite protection of any common breed. <em>(Storey's + online sources)</em></li>
+        <li>Storey's explicit top pick for Zone 5b. Bred for cold-climate performance in Michigan and New York. <em>(Storey's)</em></li>
+        <li>Heavy-feathered, heavy-bodied. Consistent layer through cold months. Scratches less aggressively — suitable near garden. <em>(Storey's)</em></li>
+      </ul>
+
+      <h3>If Wyandotte Sourcing Fails — Alternatives Available Now at The Chick Hatchery</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Breed</th><th>Comb</th><th>Eggs/yr</th><th>Egg Color</th><th>Zone 5b Verdict</th></tr></thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>Easter Egger</strong></td>
+              <td>Pea — cold-resistant</td>
+              <td>~250</td>
+              <td>Blue/green/pink</td>
+              <td><span class="badge badge-green">Acceptable fallback</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rhode Island Red</strong></td>
+              <td>Single — frostbite risk</td>
+              <td>250–300</td>
+              <td>Brown</td>
+              <td><span class="badge badge-amber">Use with caution</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Easter Egger — full notes</summary>
+        <ul style="padding:0.75rem 1rem;margin:0;">
+          <li>Pea comb gives cold protection comparable to rose comb — no frostbite spike to worry about. Solid Zone 5b bird.</li>
+          <li>Good layers (~250/year), cold-hardy, docile, easy to manage. NPIP-certified at The Chick Hatchery.</li>
+          <li>Tradeoff: colored eggs (blue/green/pink), not brown. If you don't care about egg color uniformity, this is the clearest fallback.</li>
+          <li>Not a recognized APA breed — "Easter Egger" is a mixed-heritage bird carrying the blue egg gene. Individual birds vary in appearance.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Rhode Island Red — full notes</summary>
+        <ul style="padding:0.75rem 1rem;margin:0;">
+          <li>Excellent layer — 250–300 brown eggs/year, one of the highest-production heritage breeds available.</li>
+          <li>Cold-hardy body and heavy feathering. But single comb is the problem: tall, upright, with multiple points. Vulnerable to frostbite in Wisconsin winters even with good ventilation.</li>
+          <li>Workable but requires more diligent humidity management in the coop. Comb damage in severe cold is a real possibility.</li>
+          <li>If you go RIR, monitor comb weekly in winter and apply Vaseline on days below 10°F as a preventive measure.</li>
+          <li>Bottom line: good bird, wrong comb for Zone 5b. Use only if Wyandotte and Easter Egger both fail.</li>
+        </ul>
+      </details>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">⚠ Timing Warning — If Pivoting to Chicks</span>
+        Day-old chicks ordered now (late May 2026) reach laying age at 18–24 weeks = October/November 2026. That is exactly when Wisconsin daylight drops below 14 hours and production stops. Without supplemental lighting, first eggs would not come until spring 2027. Started pullets remain the right path — keep working sourcing before pivoting to chicks.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COOP -->
+  <section id="coop">
+    <div class="section-header">
+      <span class="icon">🏚</span>
+      <h2>Coop Conversion — The Shed</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>What We Know</h3>
+      <div class="two-col">
+        <div class="stat-card"><div class="stat-label">Floor space</div><div class="stat-value">80 sq ft</div></div>
+        <div class="stat-card"><div class="stat-label">Roof</div><div class="stat-value">6 ft / 8 ft</div></div>
+        <div class="stat-card"><div class="stat-label">People door</div><div class="stat-value">30 in (wheelbarrow fits)</div></div>
+        <div class="stat-card"><div class="stat-label">Electric</div><div class="stat-value">Yes</div></div>
+      </div>
+
+      <div class="callout callout-warn">
+        <span class="callout-label">⚠ Required Before Conversion</span>
+        Document: floor material, ground clearance, ventilation openings (which walls, size, roofline vents), windows, drainage, and predator vulnerabilities.
+      </div>
+
+      <h3>Ventilation</h3>
+      <div class="callout callout-danger">
+        <span class="callout-label">Critical</span>
+        Most under-designed element of coops. Frostbite is caused by humidity above 75% — <strong>not cold alone</strong>. Do not seal the coop in winter.
+      </div>
+      <ul>
+        <li>Holes near ceiling, north and south walls</li>
+        <li><strong>Cold:</strong> close north holes, keep south open unless bitter cold</li>
+        <li><strong>Warm:</strong> open all holes and windows — cross-ventilate</li>
+        <li>Chickens produce CO2, moisture, ammonia — stale air concentrates disease</li>
+      </ul>
+
+      <h3>Flooring</h3>
+      <div class="table-wrap">
+        <table class="narrow">
+          <thead><tr><th>Option</th><th>Verdict</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Concrete</td><td><span class="badge badge-green">Best</span></td><td>Most rodent-proof. Low-cost alt: 1 part dry cement + 3 parts sifted soil, 4–6 in deep</td></tr>
+            <tr><td>Droppings boards</td><td><span class="badge badge-green">Recommended</span></td><td>Welded wire or slats over a pit</td></tr>
+            <tr><td>Wood</td><td><span class="badge badge-amber">Acceptable</span></td><td>Must be 1 ft off ground. Cracks pack with filth.</td></tr>
+            <tr><td>Dirt</td><td><span class="badge badge-red">Avoid</span></td><td>Not rodent-proof. Hard to clean.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Roosts</h3>
+      <ul>
+        <li>10 in/bird (heavy breeds) = <strong>90 in min for 9 birds</strong> — one 8-ft bar clears this</li>
+        <li>Height: 2 ft off floor · 18 in from wall · 18 in between bars</li>
+        <li>Material: 2×2 lumber with rounded edges</li>
+        <li><strong>Guineas claim top perches</strong> — plan roost arrangement accounting for ceiling slope</li>
+      </ul>
+      <div class="callout callout-tip">
+        <span class="callout-label">✅ Decision — Droppings Management</span>
+        Removable dropping boards below roosts. Simpler build than a droppings pit, easier cleanout.
+      </div>
+
+      <h3>Nest Boxes</h3>
+      <ul>
+        <li><strong>2 boxes</strong> for 6 hens (1 per 4–5 hens) · Guineas do not use nest boxes</li>
+        <li>Dimensions: 14W × 14H × 12D inches for heavy breeds</li>
+        <li>4-inch sill at bottom · landing rail no closer than 8 in from nest edge</li>
+        <li><strong>Best:</strong> exterior-mounted with hinged lid — recovers 10–15 sq ft of interior floor</li>
+      </ul>
+
+      <h3>Pop Hole</h3>
+      <ul>
+        <li>Minimum 12×14 inches for heavy breeds</li>
+        <li><strong>Automatic solar-regulated closer — non-negotiable for Wisconsin winters</strong></li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- PREDATORS -->
+  <section id="predators">
+    <div class="section-header">
+      <span class="icon">🦊</span>
+      <h2>Predator Management</h2>
+    </div>
+    <div class="section-body">
+
+      <p style="font-size:14px;color:var(--text-muted);">Known threats: hawk · fox · owl · raccoon · weasel · mink · skunk · rat · cat · dog · coyote · opossum · snake · bobcat</p>
+
+      <h3>Key Controls</h3>
+      <ul>
+        <li><strong>Automatic pop hole closer</strong> — closes at dusk, opens at dawn</li>
+        <li><strong>Hardware cloth</strong> (not chicken wire) on ventilation — 1.5 in mesh</li>
+        <li><strong>Concrete apron or hardware cloth skirt</strong> — stops digging predators</li>
+        <li><strong>Electric fence</strong> — 6 in and 12 in wires, bent outward</li>
+        <li><strong>Nite Guard solar light</strong> — one per approach, at predator eye level</li>
+        <li>Sealed metal containers for all feed · mow grass · eliminate debris piles</li>
+        <li><strong>Trap and relocate opossums</strong> — primary egg thieves, often family groups</li>
+      </ul>
+
+      <h3>Predator Detective</h3>
+      <p style="font-size:14px;color:var(--text-muted);">Match the clues to identify the predator after a loss.</p>
+
+      <details>
+        <summary>Bird killed — clue table</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Clue</th><th>Time</th><th>Predator</th></tr></thead>
+            <tbody>
+              <tr><td>Entire chicken eaten on site</td><td>Dusk/dawn</td><td>Hawk</td></tr>
+              <tr><td>Bites in breast/thigh, abdomen eaten</td><td>Night</td><td>Opossum</td></tr>
+              <tr><td>Head/neck eaten, feathers at fence post</td><td>Night</td><td>Owl</td></tr>
+              <tr><td>Scattered feathers</td><td>Early AM</td><td>Coyote</td></tr>
+              <tr><td>One bird gone, clean scene</td><td>Dusk/dawn</td><td>Fox</td></tr>
+              <tr><td>Neck/breast torn, every 5–7 nights</td><td>Night</td><td>Raccoon</td></tr>
+              <tr><td>Back of head bitten</td><td>Night</td><td>Mink</td></tr>
+              <tr><td>Head/under-parts eaten, skunklike smell</td><td>Night</td><td>Weasel</td></tr>
+              <tr><td>Chicks killed, abdomen eaten, lingering smell</td><td>Night</td><td>Skunk</td></tr>
+              <tr><td>Claw marks on neck/back, partially covered</td><td>Night</td><td>Bobcat</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>Birds missing — clue table</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Clue</th><th>Time</th><th>Predator</th></tr></thead>
+            <tbody>
+              <tr><td>Ranged bird gone, scattered/no feathers</td><td>Dusk/dawn</td><td>Fox or Hawk</td></tr>
+              <tr><td>Fence or building torn into</td><td>Anytime</td><td>Dog</td></tr>
+              <tr><td>Several missing, no clues</td><td>Early AM</td><td>Coyote</td></tr>
+              <tr><td>Coarse fur at shelter openings</td><td>Night</td><td>Raccoon</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>Eggs missing — clue table</summary>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Clue</th><th>Time</th><th>Predator</th></tr></thead>
+            <tbody>
+              <tr><td>No clues</td><td>Day</td><td>Snake</td></tr>
+              <tr><td>Empty shells in or near nest</td><td>Anytime</td><td>Dog, Jay, or Crow</td></tr>
+              <tr><td>No clues</td><td>Night</td><td>Rat</td></tr>
+              <tr><td>Faint odor, empty shells</td><td>Night</td><td>Skunk</td></tr>
+              <tr><td>Empty shells in and around nests, nightly</td><td>Night</td><td>Opossum, Mink, or Raccoon</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- WATER -->
+  <section id="water">
+    <div class="section-header">
+      <span class="icon">💧</span>
+      <h2>Water</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="two-col">
+        <div class="stat-card"><div class="stat-label">Daily baseline</div><div class="stat-value">1–2 cups/bird</div></div>
+        <div class="stat-card"><div class="stat-label">Layers drink</div><div class="stat-value">2× that</div></div>
+        <div class="stat-card"><div class="stat-label">9 birds, summer</div><div class="stat-value">Up to 1.1 gal/day</div></div>
+        <div class="stat-card"><div class="stat-label">Ideal temp</div><div class="stat-value">50–55°F</div></div>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">Critical</span>
+        36 hours without water can trigger molt and <strong>permanent laying damage</strong>. 24-hour deprivation may take another 24 hours to recover from.
+      </div>
+
+      <h3>Equipment</h3>
+      <ul>
+        <li><strong>2-gallon metal bell waterer</strong> — not plastic (cracks in Wisconsin winters)</li>
+        <li><strong>Two waterers</strong> spaced apart — required with guineas to prevent competition</li>
+        <li>At least one outside during summer ranging hours</li>
+      </ul>
+
+      <h3>Winter</h3>
+      <ul>
+        <li><strong>Thermo Cube TC-3</strong> thermostatically controlled outlet + plug-in heated bowl</li>
+        <li>If no heater: bring warm water at least twice daily</li>
+        <li>Dehydration in winter directly reduces laying</li>
+      </ul>
+
+      <h3>Cleaning</h3>
+      <p>Weekly with soap and water. Disinfect with 1:9 bleach/water or vinegar. A grout brush fits bell waterer rims.</p>
+
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section id="feed">
+    <div class="section-header">
+      <span class="icon">🌾</span>
+      <h2>Feed</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>Ration Sequence</h3>
+      <div class="table-wrap">
+        <table class="narrow">
+          <thead><tr><th>Stage</th><th>Age</th><th>Feed</th></tr></thead>
+          <tbody>
+            <tr><td>Brooding</td><td>Arrival – ~6–8 wks</td><td>Chick starter</td></tr>
+            <tr><td>Growing</td><td>~8–18 wks</td><td>Grower/developer</td></tr>
+            <tr><td>Laying</td><td>Point of lay (~18–24 wks)</td><td>Layer ration</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-warn">
+        <span class="callout-label">⚠ Important</span>
+        Switch at point of lay — <strong>not at a target age</strong>. Laying before the switch depletes calcium reserves.
+      </div>
+
+      <h3>Amounts</h3>
+      <ul>
+        <li>Each mature heavy-breed hen: ~4 lbs per week</li>
+        <li>6 hens in winter confinement: ~24 lbs per week</li>
+        <li>Free choice feeding — always available</li>
+        <li>Fill feeder no more than two-thirds full to reduce waste</li>
+        <li>Summer + ranging: reduce commercial feed 20–30%, watch body condition</li>
+      </ul>
+
+      <h3>Supplements</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Supplement</th><th>How</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Oyster shell</td><td>Separate hopper, always</td><td>Hens self-regulate. Don't mix into feed.</td></tr>
+            <tr><td>Granite grit</td><td>Separate hopper, always</td><td>Required in full confinement</td></tr>
+            <tr><td>Scratch</td><td>Treat only, small handful/day</td><td>Skip in summer. High carb, low protein.</td></tr>
+            <tr><td>ACV</td><td>1 tbsp per gallon</td><td>Double during stress periods</td></tr>
+            <tr><td>High-protein (molt)</td><td>Cat food, mealworms, eggs</td><td>Feathers are 85% protein</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">Never Feed</span>
+        Raw potato peels · onions · garlic · avocado · fish or poultry meat · anything spoiled · high fat/sugar/salt/alcohol
+      </div>
+
+      <h3>Storage</h3>
+      <ul>
+        <li>Galvanized metal trash can or airtight container</li>
+        <li>Buy only 2–3 weeks at a time — loses value within 4 weeks of milling</li>
+        <li>Never pour fresh feed on top of old. Store off the floor.</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section id="weather">
+    <div class="section-header">
+      <span class="icon">🌡</span>
+      <h2>Seasonal Management</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>Winter — Cold and Frostbite</h3>
+      <div class="callout callout-danger">
+        <span class="callout-label">Key Fact</span>
+        Frostbite is caused by humidity above 75% — not cold alone. Ventilation is the fix. <strong>Do not seal the coop in winter.</strong>
+      </div>
+      <ul>
+        <li>2×2 perches allow birds to cover toes with body feathers at night</li>
+        <li>Heat lamp only if ceiling under 7 ft and temps very low — thermostat at 35°F, wire guard on lamp</li>
+      </ul>
+
+      <h3>Winter Lighting</h3>
+      <div class="callout callout-tip">
+        <span class="callout-label">✅ Decision Made</span>
+        No supplemental lighting. Accepting reduced winter production. Natural rest cycle — may improve longevity.
+      </div>
+
+      <h3>Summer — Heat Stress</h3>
+      <div class="callout callout-danger">
+        <span class="callout-label">Warning</span>
+        Chickens cannot regulate body temp above 104°F. Heat stress can be lethal.
+      </div>
+      <ul>
+        <li>Cool water at all times · extra stations · electrolytes in water</li>
+        <li>Do <strong>not</strong> medicate water during heat stress</li>
+        <li>A fan moving air to 90°F = still temp of 70°F</li>
+        <li>Feed scratch in the morning only — not afternoon</li>
+      </ul>
+
+      <h3>Manure Management</h3>
+      <ul>
+        <li>~1 lb per bird per week · 9 birds = ~36–40 lbs/month</li>
+        <li>Higher nitrogen than horse, cow, or goat manure</li>
+        <li>Damp litter releases ammonia — aerate frequently, remove damp spots immediately</li>
+        <li>Ammonia control: 1 lb ground limestone/week stirred into litter</li>
+        <li>Fly control: frequent cleanout · bleach scrubdown (1 tbsp/gallon) weekly in fly season</li>
+        <li>Biological fly predators (parasitic wasps) — release mid to late May before flies establish</li>
+        <li>Composting: active at 12–15 in deep with carbon material · garden: 45 lbs per 100 sq ft</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- HEALTH -->
+  <section id="health">
+    <div class="section-header">
+      <span class="icon">🩺</span>
+      <h2>Health &amp; Biosecurity</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>Signs of a Healthy Bird</h3>
+      <p>Active · alert · full wavy comb · bright shiny eyes · talking and clucking · normal droppings (firm, grayish-brown with white urate cap). Cecal droppings (mustard-colored, foamy) are normal once or twice daily.</p>
+
+      <h3>Warning Signs</h3>
+      <div class="callout callout-danger">
+        Weight loss or production decline · labored breathing · coughing/sneezing/nasal discharge · staggering or paralysis · sudden death · any change in droppings
+      </div>
+
+      <h3>Biosecurity</h3>
+      <ul>
+        <li>Isolate new birds at least 2 weeks before introducing</li>
+        <li>Change shoes before visiting another flock — require the same of visitors</li>
+        <li>Keep wild birds away from coop and feed</li>
+        <li>Do not mix birds of different ages</li>
+        <li>Medicate only when necessary — routine use creates drug-resistant organisms</li>
+      </ul>
+
+      <h3>Wisconsin Disease Priority</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Disease</th><th>Vaccine</th><th>Priority</th><th>Timing</th></tr></thead>
+          <tbody>
+            <tr><td>Marek's Disease</td><td>✅ Yes</td><td><span class="badge badge-red">High</span></td><td>1 day old. Confirm with hatchery.</td></tr>
+            <tr><td>Newcastle / IB</td><td>✅ Yes</td><td><span class="badge badge-red">High</span></td><td>6 wks · 16 wks · repeat</td></tr>
+            <tr><td>Laryngotracheitis</td><td>✅ Yes</td><td><span class="badge badge-amber">Moderate</span></td><td>10 weeks</td></tr>
+            <tr><td>Fowl Pox</td><td>✅ Yes</td><td><span class="badge badge-amber">Moderate</span></td><td>Mosquito season</td></tr>
+            <tr><td>Avian Influenza</td><td>❌ None</td><td><span class="badge badge-green">Know contact</span></td><td>Reportable — get DATCP contact before birds arrive</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info">
+        <span class="callout-label">📞 Action</span>
+        Confirm vaccination schedule with your vet based on <strong>Sheboygan County</strong> prevalence before birds arrive.
+      </div>
+
+      <h3>Parasites</h3>
+      <details>
+        <summary>Internal — worms and coccidia</summary>
+        <ul>
+          <li><strong>Cecal worms</strong> — most common</li>
+          <li><strong>Gapeworms</strong> — more likely with guineas present. Wrap around windpipe. Can kill.</li>
+          <li><strong>Large roundworms</strong> — weakness, weight loss, pale heads</li>
+          <li>Do NOT deworm indiscriminately — submit fecal samples every 3 months. A test costs a few dollars.</li>
+          <li><strong>Coccidia</strong> — most common cause of death in young birds. Good sanitation + ask vet about anticoccidial timing.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>External — mites and lice</summary>
+        <ul>
+          <li><strong>Northern fowl mites</strong> — active year-round, worst in winter. Primary Wisconsin concern.</li>
+          <li><strong>Lice</strong> — white eggs at feather bases</li>
+          <li>Treatment: diatomaceous earth in dust bath, linseed oil on roosts and cracks</li>
+        </ul>
+      </details>
+
+      <h3>First-Aid Kit — Assemble Before Birds Arrive</h3>
+      <p style="font-size:14px;">Saline wound wash · hydrogen peroxide · gauze pads and rolls · tweezers · syringe for flushing · Wonder Dust (bleeding control) · Betadine/povidone-iodine · Desitin or Ichthammol · hydrocortisone cream · KY Jelly · Vaseline · electrolyte powder · vet wrap/first-aid tape · tongue depressors (splints) · zip bags (droppings collection) · paper towels · clean container</p>
+
+    </div>
+  </section>
+
+  <!-- GUINEAS -->
+  <section id="guineas">
+    <div class="section-header">
+      <span class="icon">🦃</span>
+      <h2>Guineas — Key Differences</h2>
+    </div>
+    <div class="section-body">
+      <ul>
+        <li>Roost <strong>higher</strong> than chickens — will claim top perches · plan accordingly</li>
+        <li>Better free-rangers than confined birds — significant outdoor time required daily</li>
+        <li>Do <strong>not</strong> use nest boxes — eggs laid on the ground, often hidden</li>
+        <li>Harder to confine — wing clipping relevant · fence planning must account for this</li>
+        <li>Require training to return to coop at dusk when new to a property</li>
+        <li><strong>Two waterers and two feeders required</strong> — compete at single stations</li>
+        <li><strong>Gapeworms more likely</strong> with guineas present — flag for monitoring</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">⚠ Research Gap</span>
+        Guinea-specific ration requirements — verify against Storey's guinea chapter before birds arrive.
+      </div>
+    </div>
+  </section>
+
+  <!-- EGGS -->
+  <section id="eggs">
+    <div class="section-header">
+      <span class="icon">🥚</span>
+      <h2>Egg Management</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>Freshness Testing</h3>
+      <div class="table-wrap">
+        <table class="narrow">
+          <thead><tr><th>Float Test Result</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>Sinks, lies flat</td><td>Fresh</td></tr>
+            <tr><td>Tilts slightly</td><td>~1 week old</td></tr>
+            <tr><td>Stands on small end</td><td>2–3 weeks old</td></tr>
+            <tr><td>Floats</td><td>Old — inspect before eating</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:14px;color:var(--text-muted);">Smell is the fastest and most reliable test. A bad egg is unmistakable.</p>
+
+      <h3>Storage &amp; Shelf Life</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Method</th><th>Conditions</th><th>Shelf Life</th></tr></thead>
+          <tbody>
+            <tr><td>Refrigerated (unwashed)</td><td>34–40°F</td><td>5 weeks</td></tr>
+            <tr><td>Oiled only</td><td>34°F</td><td>8 months</td></tr>
+            <tr><td>Thermostabilized only</td><td>34°F</td><td>6 months</td></tr>
+            <tr><td>Oiled + refrigerated</td><td>34°F</td><td>9 months</td></tr>
+            <tr><td>Frozen (out of shell)</td><td>0°F</td><td>12 months</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">Do Not Wash</span>
+        Washing removes the bloom — a natural antimicrobial coating that keeps bacteria out through the shell's pores. Don't wash until just before use.
+      </div>
+
+      <h3>Preservation Methods</h3>
+      <details>
+        <summary>Oiling</summary>
+        <p>Coat clean, room-temperature eggs in light mineral oil. Drain on a rack for at least 30 minutes.</p>
+      </details>
+      <details>
+        <summary>Thermostabilization</summary>
+        <p>Submerge in water at exactly 130°F — 15 minutes for room-temp eggs, 18 minutes for cold. Cool immediately in tap water. Destroys surface bacteria without cooking the egg.</p>
+      </details>
+      <details>
+        <summary>Freezing</summary>
+        <p>Remove from shell before freezing. Yolks: add 1/8 tsp salt or 1.5 tsp corn syrup per 4 yolks to prevent gumminess. Thaw in refrigerator overnight. Use only in fully cooked dishes.</p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section id="checklist">
+    <div class="section-header">
+      <span class="icon">✅</span>
+      <h2>Pre-Arrival Checklist</h2>
+    </div>
+    <div class="section-body">
+      <ul class="checklist" id="task-list">
+        <li data-id="0"><div class="check-box" onclick="toggleCheck(0)"></div><span>Shed assessment — floor, ventilation, windows, drainage, predator vulnerabilities</span></li>
+        <li data-id="1"><div class="check-box" onclick="toggleCheck(1)"></div><span>Call vet — confirm they see chickens and guineas. Get referral if not.</span></li>
+        <li data-id="2"><div class="check-box" onclick="toggleCheck(2)"></div><span>Identify UW-Madison Extension poultry contact as backup</span></li>
+        <li data-id="3"><div class="check-box" onclick="toggleCheck(3)"></div><span>Locate Wisconsin DATCP poultry contact (required for reportable disease)</span></li>
+        <li data-id="4"><div class="check-box" onclick="toggleCheck(4)"></div><span><strong>Sourcing (in progress):</strong> Wyandotte started pullets sold out at The Chick Hatchery · Call Abendroth's (920) 478-2053 for Wyandotte pullets + guineas · Check Meyer Hatchery (meyerhatchery.com) · The Chick Hatchery has Easter Egger and Rhode Island Red started pullets (see breed notes)</span></li>
+        <li data-id="5"><div class="check-box" onclick="toggleCheck(5)"></div><span>Walk ranging area — identify toxic plants before outdoor access</span></li>
+        <li data-id="6"><div class="check-box" onclick="toggleCheck(6)"></div><span>Assemble first-aid kit before birds arrive</span></li>
+        <li data-id="7"><div class="check-box" onclick="toggleCheck(7)"></div><span>Confirm vaccination schedule with vet based on Sheboygan County prevalence</span></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3>Toxic Plants — Walk the Ranging Area First</h3>
+      <p style="font-size:14px;">Black locust · black nightshade · castor bean · corn cockle · death camas · jimsonweed · milkweed · oleander · poison hemlock · pokeweed · raw potato · rattlebox · vetch · yew · water hemlock · mushrooms (variety-dependent)</p>
+      <div class="callout callout-danger">
+        <span class="callout-label">Never-Feed Scraps</span>
+        Onions · garlic · raw potato peels
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GAPS -->
+  <section id="gaps">
+    <div class="section-header" style="background:var(--red-light);border-color:var(--red-border);">
+      <span class="icon">🔍</span>
+      <h2 style="color:var(--red-dark);">Open Gaps — 3 Blocking, 3 Pre-Arrival</h2>
+    </div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:0.75rem;">Red dot = blocking now. Amber dot = must resolve before birds arrive.</p>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--red-dark);"></div><span><strong>Bird sourcing:</strong> Wyandotte started pullets sold out at The Chick Hatchery. Call Abendroth's + Meyer Hatchery. Easter Egger and RIR started pullets available as fallback — see Breed section.</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--red-dark);"></div><span><strong>Shed assessment:</strong> Not yet done. Required before any conversion decisions or hardware purchases.</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--red-dark);"></div><span><strong>Acquisition timeline:</strong> Once sourcing resolves, map bird arrival date against coop conversion completion. Started pullets need coop ready on arrival. Chick fallback adds 6–8 brooder weeks but delays first eggs to spring 2027.</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--amber-mid);"></div><span><strong>Guinea ration requirements</strong> — verify against Storey's guinea chapter before birds arrive</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--amber-mid);"></div><span><strong>Fencing and enclosure</strong> — summer free ranging requirements, especially guinea containment</span></div>
+      <div class="gap-item"><div class="gap-dot" style="background:var(--amber-mid);"></div><span><strong>Toxic plant walk</strong> — identify and remove hazards in ranging area before birds have outdoor access</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Source: Storey's Guide to Raising Chickens · Digested May 2026 · Status updated May 26, 2026 · KB Personal Projects</p>
+</footer>
+
+<script>
+  const STORAGE_KEY = 'chicken-checklist-v1';
+  const TOMORROW_KEY = 'chicken-tomorrow-v1';
+  let checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  let checkedTomorrow = JSON.parse(localStorage.getItem(TOMORROW_KEY) || '[]');
+
+  function render() {
+    document.querySelectorAll('#task-list li').forEach(li => {
+      const id = parseInt(li.dataset.id);
+      const box = li.querySelector('.check-box');
+      if (checked.includes(id)) {
+        box.classList.add('done');
+        li.classList.add('done-item');
+      } else {
+        box.classList.remove('done');
+        li.classList.remove('done-item');
+      }
+    });
+    document.querySelectorAll('#tomorrow-list li').forEach(li => {
+      const id = parseInt(li.dataset.id.replace('t',''));
+      const box = li.querySelector('.check-box');
+      if (checkedTomorrow.includes(id)) {
+        box.classList.add('done');
+        li.classList.add('done-item');
+      } else {
+        box.classList.remove('done');
+        li.classList.remove('done-item');
+      }
+    });
+  }
+
+  function toggleCheck(id) {
+    if (checked.includes(id)) {
+      checked = checked.filter(x => x !== id);
+    } else {
+      checked.push(id);
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+    render();
+  }
+
+  function toggleTomorrow(id) {
+    if (checkedTomorrow.includes(id)) {
+      checkedTomorrow = checkedTomorrow.filter(x => x !== id);
+    } else {
+      checkedTomorrow.push(id);
+    }
+    localStorage.setItem(TOMORROW_KEY, JSON.stringify(checkedTomorrow));
+    render();
+  }
+
+  render();
+</script>
+
+</body>
+</html>
